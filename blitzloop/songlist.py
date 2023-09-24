@@ -34,9 +34,13 @@ class SongDatabase(object):
                     continue
                 path = os.path.join(dirpath, name)
                 print(path)
-                song = Song(path)
-                song.id = len(self.songs)
-                self.songs.append(song)
+                try:
+                    song = Song(path)
+                except Exception as e:
+                    print("failed to load:", e)
+                else:
+                    song.id = len(self.songs)
+                    self.songs.append(song)
 
 class SongQueueEntry(object):
     def __init__(self, song):
