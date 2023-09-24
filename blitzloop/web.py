@@ -83,7 +83,7 @@ def get_cover(filename, size):
     response.headers['Last-Modified'] = lm
     response.content_type = "image/png"
     if request.method != 'HEAD':
-        im = Image.open(filename).resize((size, size), Image.ANTIALIAS)
+        im = Image.open(filename).resize((size, size), Image.Resampling.LANCZOS)
         fd = io.BytesIO()
         im.save(fd, "PNG")
         fd.seek(0)
