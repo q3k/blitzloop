@@ -319,10 +319,10 @@ class OutlinedGlyph(object):
 
         bitmaps = []
         for glyph in glyphs:
-            expanded = np.zeros((height,width), dtype=np.float)
+            expanded = np.zeros((height,width), dtype=float)
             dx = glyph.left - left
             dy = top - glyph.top
-            data = bitmap_to_numpy(glyph.bitmap, np.float) / 255.0
+            data = bitmap_to_numpy(glyph.bitmap, float) / 255.0
             expanded[dy:dy+glyph.bitmap.rows, dx:dx+glyph.bitmap.width] = data
             bitmaps.append(expanded)
 
