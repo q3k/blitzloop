@@ -117,7 +117,7 @@ class Player(object):
         self.mpv.set_property("vf", "")
 
         # Fix seek behavior when using a static background
-        if any(song.videofile.endswith(e) for e in [".jpg", ".png", ".bmp"]):
+        if song.videofile is not None and any(song.videofile.endswith(e) for e in [".jpg", ".png", ".bmp"]):
             self.mpv.set_property("hr-seek", "yes")
 
         if "video_offset" in song.song:
